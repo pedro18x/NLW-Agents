@@ -92,7 +92,7 @@ cd NLW-Agents
 
 ### 2. Suba o banco de dados (PostgreSQL + pgvector)
 
-Se você tem Docker instalado, basta rodar:
+Abra o Docker Desktop e basta rodar:
 
 ```bash
 cd server
