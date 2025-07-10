@@ -11,7 +11,7 @@
     "db:seed": "node --env-file .env --experimental-strip-types --no-warnings src/db/seed.ts"
   },
   "keywords": [],
-  "author": "",
+  "author": "Pedro Ernesto",
   "license": "ISC",
   "description": "",
   "devDependencies": {
