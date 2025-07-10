@@ -132,7 +132,10 @@ git clone <url-do-repositorio>
 cd agents
 ```
 
-### 2. Configure o banco de dados
+### 2. Suba o banco de dados (PostgreSQL + pgvector)
+
+Se você tem Docker instalado, basta rodar:
+
 ```bash
 cd server
 docker-compose up -d
@@ -183,34 +186,56 @@ Acesse a aplicação em [http://localhost:5173](http://localhost:5173)
 
 ### Salas
 - `GET /rooms` - Lista todas as salas
-- `POST /rooms` - Cria nova sala
-- `GET /rooms/:id/questions` - Lista perguntas da sala
+- `POST /rooms` - Cria uma nova sala
+- `GET /rooms/:roomId/questions` - Lista perguntas de uma sala
+- `POST /rooms/:roomId/questions` - Cria pergunta em uma sala
+- `POST /rooms/:roomId/audio` - Upload de áudio para uma sala
 
-### Áudio (Gravação)
-- `POST /rooms/:id/audio` - Recebe chunks de áudio gravados em tempo real
+## Boas Práticas e Segurança
 
-### Perguntas
-- `POST /rooms/:id/questions` - Cria pergunta
+### Backend
+- Validação de dados com Zod
+- Rate limiting para proteção da API
+- Sanitização de inputs
+- Logs estruturados
+- Tratamento de erros consistente
+- Migrations para versionamento do banco
 
-## 🗄️ Estrutura do Banco
+### Frontend
+- Componentes reutilizáveis
+- Gerenciamento de estado com React Query
+- Formulários validados
+- Design system consistente
+- Feedback visual de loading/erro
+- Responsividade
 
-### Tabelas
-- **rooms**: Salas de conteúdo
-- **audio_chunks**: Chunks de áudio transcritos (gravados em tempo real)
-- **questions**: Perguntas e respostas
+## Desenvolvimento
 
-### Extensões
-- **pgvector**: Busca vetorial para embeddings
+### Comandos úteis
 
-## ⚠️ Observações
+```bash
+# Backend
+npm run dev         # Inicia em modo desenvolvimento
+npm run db:generate # Gera nova migration
+npm run db:migrate  # Aplica migrations
+npm run db:seed     # Reseta e popula o banco
 
-- **Não há upload de arquivos de áudio** - apenas gravação pelo navegador
-- **Requer permissão do microfone** para funcionar
-- **Funciona apenas em navegadores modernos** com suporte à MediaRecorder API
-- **Áudio é processado em tempo real** - não é possível pausar e continuar depois
+# Frontend
+npm run dev    # Inicia em modo desenvolvimento
+npm run build  # Build para produção
+npm run preview # Preview do build
+```
 
----
+### Testando a API
+- Use o arquivo `server/client.http` com o plugin REST Client do VSCode
+- Ou importe a coleção para o Insomnia/Postman
+- O frontend se comunica com o backend em `http://localhost:3333`
 
-<p align="center">
-  Desenvolvido com ❤️ por <strong>Pedro Ernesto</strong> durante a <strong>NLW Agents</strong> da <a href="https://rocketseat.com.br">Rocketseat</a>
-</p> 
+### Estrutura do Banco
+- Tabela `rooms`: Salas de estudo
+- Tabela `audio_chunks`: Trechos de áudio transcritos
+- Tabela `questions`: Perguntas e respostas
+- Extensão `pgvector`: Busca semântica
+
+
+Desenvolvido por Pedro Ernesto durante a NLW Agents da [Rocketseat](https://app.rocketseat.com.br/). 
