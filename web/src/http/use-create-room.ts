@@ -1,12 +1,12 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import type { CreateRoomsRequest } from './types/create-room-request'
-import type { CreateRoomsResponse } from './types/create-room-response'
+import type { CreateRoomRequest } from './types/create-room-request'
+import type { CreateRoomResponse } from './types/create-room-response'
 
 export function useCreateRoom() {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: async (data: CreateRoomsRequest) => {
+    mutationFn: async (data: CreateRoomRequest) => {
       const response = await fetch('http://localhost:3333/rooms', {
         method: 'POST',
         headers: {
@@ -15,7 +15,7 @@ export function useCreateRoom() {
         body: JSON.stringify(data),
       })
 
-      const result: CreateRoomsResponse = await response.json()
+      const result: CreateRoomResponse = await response.json()
 
       return result
     },

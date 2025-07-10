@@ -1,15 +1,15 @@
 import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { Badge } from '@/components/ui/badge'
+import { useRooms } from '@/http/use-rooms'
+import { dayjs } from '@/lib/dayjs'
+import { Badge } from './ui/badge'
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card'
-import { useRooms } from '@/http/use-rooms'
-import { dayjs } from '@/lib/dayjs'
+} from './ui/card'
 
 export function RoomList() {
   const { data, isLoading } = useRooms()
@@ -35,7 +35,7 @@ export function RoomList() {
               to={`/room/${room.id}`}
             >
               <div className="flex flex-1 flex-col gap-1">
-                <h3 className="font-medium ">{room.name}</h3>
+                <h3 className="font-medium">{room.name}</h3>
 
                 <div className="flex items-center gap-2">
                   <Badge className="text-xs" variant="secondary">

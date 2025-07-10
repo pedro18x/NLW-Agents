@@ -1,6 +1,6 @@
 {
-  "id": "decb5b55-2d33-492e-88d0-8086f6954ab3",
-  "prevId": "e48ef07b-966a-40c4-a167-f48bb2f55118",
+  "id": "874c7191-240f-4b59-a585-c46910cda405",
+  "prevId": "336eddc1-eeae-479a-8864-abf63ce50606",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -19,7 +19,7 @@
           "name": "room_id",
           "type": "uuid",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "transcription": {
           "name": "transcription",
@@ -78,7 +78,7 @@
           "name": "room_id",
           "type": "uuid",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "question": {
           "name": "question",

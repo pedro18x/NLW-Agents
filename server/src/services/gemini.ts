@@ -12,7 +12,7 @@ export async function transcribeAudio(audioAsBase64: string, mimeType: string) {
     model,
     contents: [
       {
-        text: 'Transcreva o áudio para português do Brasil. Seja preciso e natural na transcrição. Mantenha a pontuação adequada e divida o texto em parágrados quando for apropriado.',
+        text: 'Transcreva o áudio para português do Brasil. Seja preciso e natural na transcrição. Mantenha a pontuação adequada e divida o texto em parágrafos quando for apropriado.',
       },
       {
         inlineData: {
@@ -53,7 +53,7 @@ export async function generateAnswer(
   const context = transcriptions.join('\n\n')
 
   const prompt = `
-    Com base no texto fornecido abaixo como contexto, responda a pergunta de forma clara e precisa em portugues do Brasil.
+    Com base no texto fornecido abaixo como contexto, responda a pergunta de forma clara e precisa em português do Brasil.
   
     CONTEXTO:
     ${context}
@@ -62,12 +62,12 @@ export async function generateAnswer(
     ${question}
 
     INSTRUÇÕES:
-    - Use apenas informações contindas no contexto enviado;
+    - Use apenas informações contidas no contexto enviado;
     - Se a resposta não for encontrada no contexto, apenas responda que não possui informações suficientes para responder;
     - Seja objetivo;
     - Mantenha um tom educativo e profissional;
     - Cite trechos relevantes do contexto se apropriado;
-    - Se for citar o contexto, utilize o termo "conteúdo da aula";
+    - Se for citar o contexto, utilize o temo "conteúdo da aula";
   `.trim()
 
   const response = await gemini.models.generateContent({
@@ -80,7 +80,7 @@ export async function generateAnswer(
   })
 
   if (!response.text) {
-    throw new Error('Falha ao gerar resposta pelo Gemini.')
+    throw new Error('Falha ao gerar resposta pelo Gemini')
   }
 
   return response.text

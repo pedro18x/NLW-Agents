@@ -1,25 +1,22 @@
+/** biome-ignore-all lint/suspicious/noConsole: <explanation> */
 import { useRef, useState } from 'react'
 import { Navigate, useParams } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
-
-type RoomParams = {
-  roomId: string
-}
 
 const isRecordingSupported =
   !!navigator.mediaDevices &&
   typeof navigator.mediaDevices.getUserMedia === 'function' &&
   typeof window.MediaRecorder === 'function'
 
+type RoomParams = {
+  roomId: string
+}
+
 export function RecordRoomAudio() {
   const params = useParams<RoomParams>()
   const [isRecording, setIsRecording] = useState(false)
   const recorder = useRef<MediaRecorder | null>(null)
   const intervalRef = useRef<NodeJS.Timeout>(null)
-
-  if (!params.roomId) {
-    return <Navigate replace to="/" />
-  }
 
   function stopRecording() {
     setIsRecording(false)
@@ -68,7 +65,7 @@ export function RecordRoomAudio() {
     }
 
     recorder.current.onstop = () => {
-      console.log('Gravação encerrada/pausada!')
+      console.log('Gravação encerrada/pausada')
     }
 
     recorder.current.start()
@@ -99,12 +96,16 @@ export function RecordRoomAudio() {
     }, 5000)
   }
 
+  if (!params.roomId) {
+    return <Navigate replace to="/" />
+  }
+
   return (
     <div className="flex h-screen flex-col items-center justify-center gap-3">
       {isRecording ? (
         <Button onClick={stopRecording}>Pausar gravação</Button>
       ) : (
-        <Button onClick={startRecording}>Gravar audio</Button>
+        <Button onClick={startRecording}>Gravar áudio</Button>
       )}
       {isRecording ? <p>Gravando...</p> : <p>Pausado</p>}
     </div>

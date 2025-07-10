@@ -40,7 +40,7 @@ export const uploadAudioRoute: FastifyPluginCallbackZod = (app) => {
       const chunk = result[0]
 
       if (!chunk) {
-        throw new Error('Erro ao salvar chunk de áudio.')
+        throw new Error('Erro ao salvar chunk de áudio')
       }
 
       return reply.status(201).send({ chunkId: chunk.id })

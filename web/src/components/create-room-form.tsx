@@ -41,6 +41,7 @@ export function CreateRoomForm() {
 
   async function handleCreateRoom({ name, description }: CreateRoomFormData) {
     await createRoom({ name, description })
+
     createRoomForm.reset()
   }
 
@@ -94,11 +95,7 @@ export function CreateRoomForm() {
               }}
             />
 
-            <Button
-              className="w-full cursor-pointer disabled:cursor-not-allowed disabled:bg-zinc-900"
-              disabled={createRoomForm.formState.isSubmitting}
-              type="submit"
-            >
+            <Button className="w-full" type="submit">
               Criar sala
             </Button>
           </form>

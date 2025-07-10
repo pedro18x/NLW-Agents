@@ -1,4 +1,4 @@
-export type CreateRoomsRequest = {
+export type CreateRoomRequest = {
   name: string
   description: string
 }

@@ -54,20 +54,19 @@ export const createQuestionRoute: FastifyPluginCallbackZod = (app) => {
 
       const result = await db
         .insert(schema.questions)
-        .values({
-          roomId,
-          question,
-          answer,
-        })
+        .values({ roomId, question, answer })
         .returning()
 
       const insertedQuestion = result[0]
 
       if (!insertedQuestion) {
-        throw new Error('Failed to create new question.')
+        throw new Error('Failed to create new room.')
       }
 
-      return reply.status(201).send({ questionId: insertedQuestion.id, answer })
+      return reply.status(201).send({
+        questionId: insertedQuestion.id,
+        answer,
+      })
     }
   )
 }

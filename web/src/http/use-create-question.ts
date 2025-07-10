@@ -24,6 +24,7 @@ export function useCreateQuestion(roomId: string) {
       return result
     },
 
+    // Executa no momento que for feita a chamada p/ API
     onMutate({ question }) {
       const questions = queryClient.getQueryData<GetRoomQuestionsResponse>([
         'get-questions',
@@ -52,7 +53,11 @@ export function useCreateQuestion(roomId: string) {
       queryClient.setQueryData<GetRoomQuestionsResponse>(
         ['get-questions', roomId],
         (questions) => {
-          if (!(questions && context?.newQuestion)) {
+          if (!questions) {
+            return questions
+          }
+
+          if (!context.newQuestion) {
             return questions
           }
 
@@ -80,5 +85,9 @@ export function useCreateQuestion(roomId: string) {
         )
       }
     },
+
+    // onSuccess: () => {
+    //   queryClient.invalidateQueries({ queryKey: ['get-questions', roomId] })
+    // },
   })
 }

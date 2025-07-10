@@ -1,6 +1,6 @@
 {
-  "id": "e48ef07b-966a-40c4-a167-f48bb2f55118",
-  "prevId": "18f58153-6df2-4f85-8b4c-1618aa2ce577",
+  "id": "336eddc1-eeae-479a-8864-abf63ce50606",
+  "prevId": "b5169c49-1fb3-4971-9599-c97b08b9c3e4",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -19,7 +19,7 @@
           "name": "room_id",
           "type": "uuid",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "question": {
           "name": "question",
