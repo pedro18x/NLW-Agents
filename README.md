@@ -1,10 +1,6 @@
-# 🤖 Agents
-
-> Projeto desenvolvido por **Pedro Ernesto** durante a **NLW Agents** da [Rocketseat](https://rocketseat.com.br)
-
 ## 📋 Sobre o Projeto
 
-O **Agents** é uma aplicação fullstack inovadora que utiliza inteligência artificial para criar um sistema de perguntas e respostas baseado em conteúdo de áudio. A aplicação permite que usuários criem salas temáticas, gravem áudios diretamente pelo navegador (não há upload de arquivos), e posteriormente façam perguntas sobre o conteúdo, recebendo respostas precisas geradas por IA.
+O projeto consiste em uma aplicação fullstack inovadora que utiliza inteligência artificial para criar um sistema de perguntas e respostas baseado em conteúdo de áudio. A aplicação permite que usuários criem salas temáticas, gravem áudios diretamente pelo navegador (não há upload de arquivos), e posteriormente façam perguntas sobre o conteúdo, recebendo respostas precisas geradas por IA.
 
 
 ## ✨ Funcionalidades
@@ -128,8 +124,8 @@ web/
 
 ### 1. Clone o repositório
 ```bash
-git clone <url-do-repositorio>
-cd agents
+git clone <https://github.com/pedro18x/NLW-Agents.git>
+cd NLW-Agents
 ```
 
 ### 2. Suba o banco de dados (PostgreSQL + pgvector)
@@ -181,61 +177,5 @@ npm run dev
 Acesse a aplicação em [http://localhost:5173](http://localhost:5173)
 
 > **⚠️ Importante**: A aplicação requer permissão do microfone para funcionar, pois não há upload de arquivos - apenas gravação em tempo real.
-
-## 📡 API Endpoints
-
-### Salas
-- `GET /rooms` - Lista todas as salas
-- `POST /rooms` - Cria uma nova sala
-- `GET /rooms/:roomId/questions` - Lista perguntas de uma sala
-- `POST /rooms/:roomId/questions` - Cria pergunta em uma sala
-- `POST /rooms/:roomId/audio` - Upload de áudio para uma sala
-
-## Boas Práticas e Segurança
-
-### Backend
-- Validação de dados com Zod
-- Rate limiting para proteção da API
-- Sanitização de inputs
-- Logs estruturados
-- Tratamento de erros consistente
-- Migrations para versionamento do banco
-
-### Frontend
-- Componentes reutilizáveis
-- Gerenciamento de estado com React Query
-- Formulários validados
-- Design system consistente
-- Feedback visual de loading/erro
-- Responsividade
-
-## Desenvolvimento
-
-### Comandos úteis
-
-```bash
-# Backend
-npm run dev         # Inicia em modo desenvolvimento
-npm run db:generate # Gera nova migration
-npm run db:migrate  # Aplica migrations
-npm run db:seed     # Reseta e popula o banco
-
-# Frontend
-npm run dev    # Inicia em modo desenvolvimento
-npm run build  # Build para produção
-npm run preview # Preview do build
-```
-
-### Testando a API
-- Use o arquivo `server/client.http` com o plugin REST Client do VSCode
-- Ou importe a coleção para o Insomnia/Postman
-- O frontend se comunica com o backend em `http://localhost:3333`
-
-### Estrutura do Banco
-- Tabela `rooms`: Salas de estudo
-- Tabela `audio_chunks`: Trechos de áudio transcritos
-- Tabela `questions`: Perguntas e respostas
-- Extensão `pgvector`: Busca semântica
-
 
 Desenvolvido por Pedro Ernesto durante a NLW Agents da [Rocketseat](https://app.rocketseat.com.br/). 
